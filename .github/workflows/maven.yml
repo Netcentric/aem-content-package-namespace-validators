@@ -68,29 +68,63 @@ jobs:
         shell: bash
         run: |
           if [ "${{ matrix.isMainBuildEnv }}" = "true" ]; then
-            echo "MVN_ADDITIONAL_OPTS=-Dsonar.projectKey=Netcentric_aem-replication-metadata-validator -Dsonar.organization=netcentric -Dsonar.host.url=https://sonarcloud.io -Pjacoco-report" >> $GITHUB_ENV
+            echo "MVN_ADDITIONAL_OPTS=-Dsonar.projectKey=Netcentric_aem-content-package-namespace-validators -Dsonar.organization=netcentric -Dsonar.host.url=https://sonarcloud.io -Pjacoco-report" >> $GITHUB_ENV
             if [ "${{github.ref}}" = "refs/heads/main" ] && [ "${{github.event_name}}" = "push" ]; then
               echo "MAVEN_USERNAME=${{ secrets.OSSRH_TOKEN_USER }}" >> $GITHUB_ENV
               echo "MAVEN_PASSWORD=${{ secrets.OSSRH_TOKEN_PASSWORD }}" >> $GITHUB_ENV
               echo "MVN_GOAL=clean deploy org.sonarsource.scanner.maven:sonar-maven-plugin:sonar" >> $GITHUB_ENV
               echo "STEP_NAME_SUFFIX=(Deploys to OSSRH)" >> $GITHUB_ENV
             else
-              echo "MVN_GOAL=clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar" >> $GITHUB_ENV
+              echo "MVN_GOAL=clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:5.0.0.4389:sonar" >> $GITHUB_ENV
             fi
           else
             echo "MVN_ADDITIONAL_OPTS=" >> $GITHUB_ENV
             echo "MVN_GOAL=clean verify" >> $GITHUB_ENV
           fi
+      - name: Set up Maven
+        # https://maven.apache.org/wrapper/#using-a-different-version-of-maven
+        run: mvn --errors --batch-mode --show-version org.apache.maven.plugins:maven-wrapper-plugin:3.3.2:wrapper "-Dmaven=3.9.9"
+
       - name: ${{ matrix.namePrefix }} Build with Maven ${{ env.STEP_NAME_SUFFIX }}
         env: 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: mvn -e -B -V ${{ env.MVN_GOAL }} ${{ env.MVN_ADDITIONAL_OPTS }}
+        run: ./mvnw -e -B -V ${{ env.MVN_GOAL }} ${{ env.MVN_ADDITIONAL_OPTS }}
 
-      - name: Publish Test Report
-        if: ${{ always() }} # make sure to run even if previous Maven execution failed (due to failed test)
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          files: |
-            target/invoker-reports/TEST-*.xml
-          check_name: Test report (${{ matrix.os }}, JDK ${{ matrix.jdk }})
+          name: Test Results (${{ matrix.os }}, JDK ${{ matrix.jdk }}))
+          path: |
+            target/surefire-reports/TEST*.xml
+            target/invoker-reports/TEST*.xml
+            target/it/**/build.log
+
+  publish-test-results:
+    name: "Publish Tests Results"
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+
+      # only needed unless run with comment_mode: off
+      pull-requests: write
+
+      # only needed for private repository
+      contents: read
+
+      # only needed for private repository
+      issues: read
+    if: always()
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          files: "artifacts/**/*.xml"
