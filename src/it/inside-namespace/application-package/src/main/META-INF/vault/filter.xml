@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/mytenant">
+    </filter>
+    <filter root="/oak:index/mytenant-custom-1">
+    </filter>
+</workspaceFilter>

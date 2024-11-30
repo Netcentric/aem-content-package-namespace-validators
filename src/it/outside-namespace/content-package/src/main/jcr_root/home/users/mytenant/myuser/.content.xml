@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal"
+    jcr:mixinTypes="[rep:AccessControllable]"
+    jcr:primaryType="rep:User"
+    jcr:uuid="2205dd08-d7c3-3d26-8bf8-ac538edd4bc2"
+    rep:authorizableId="mytenant-myuser"
+    rep:password="\{SHA-256}e106977a40196b0e-1000-e6d77348c0f254143bf7e42646eba07784770044e3d98dc63677c95ad0af24d3"
+    rep:principalName="mytenant-myuser">
+</jcr:root>
