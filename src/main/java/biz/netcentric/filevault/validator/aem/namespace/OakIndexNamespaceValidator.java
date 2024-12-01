@@ -47,7 +47,7 @@ public class OakIndexNamespaceValidator implements DocumentViewXmlValidator {
     public @Nullable Collection<ValidationMessage> validate(
             @NotNull DocViewNode2 node, @NotNull NodeContext nodeContext, boolean isRoot) {
         if (isOakIndexDefinition(node)) {
-            String type = node.getPropertyValue(PROPERTY_NAME_TYPE).orElse(null);
+            String type = node.getPropertyValue(PROPERTY_NAME_TYPE).orElse("");
             Collection<String> includedPaths = null;
             switch (type) {
                 case "lucene":
