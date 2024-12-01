@@ -18,7 +18,7 @@ There are several validators included in this artifact, all relate to namespacin
 1. [Oak Query Index Definition][oakindex] (path restrictions for [Lucene][oakindex-lucene-pathrestrictions] or [Property][oakindex-property-pathrestrictions] index definitions)
 1. [OSGi Configuration][osgi-installer-configurations]
 1. [Sling Resource Type and Resource Super Type][sling-resource-type] (`sling:resourceType` and `sling:resourceSuperType` properties)
-1. [AEM Client Library][aem-clientlibrary] (`category` property)
+1. [AEM Client Library][aem-clientlibrary] (`categories` property)
 
 Namespacing has been explicitly mentioned in [Achim Koch's Blog: Hosting Multiple Tenants on AEM](https://blog.developer.adobe.com/hosting-multiple-tenants-on-aem-815c8ed0c9f9) but obviously namespacing is just one of multiple aspects to consider for multi-tenant AEM environments.
 
@@ -47,7 +47,7 @@ Validator ID | Option | Description
 `netcentric-osgiconfig-namespace` | `restrictFactoryConfigurationsToAllowedPidPatterns` | Boolean flag, `false` by default. If set to `true` each factory configuration PID given via the [OSGi Installer][osgi-installer-configurations] must also matching at least one of the given patterns from `allowedPidPatterns`.
 `netcentric-resourcetype-namespace` | `allowedTypePatterns` | Comma-separated list of regular expression patterns. Each `sling:resourceType` property of arbitrary JCR nodes must match at least one of the given patterns.
 `netcentric-resourcetype-namespace` | `allowedSuperTypePatterns` | Comma-separated list of regular expression patterns. Each `sling:resourceSuperType` property of arbitrary JCR nodes must match at least one of the given patterns.
-`netcentric-clientlibrary-namespace` | `allowedCategoryPatterns` | Comma-separated list of regular expression patterns. Each [client library's category][aem-clientlibrary] must match at least one of the given patterns.
+`netcentric-clientlibrary-namespace` | `allowedCategoryPatterns` | Comma-separated list of regular expression patterns. Each [client library's `categories` value][aem-clientlibrary] must match at least one of the given patterns.
 
 *Due to the use of comma-separated strings it is not possible to use a comma within the regular expressions. However, as those are matched against names/paths (which don't allow a comma anyhow) using the comma inside the regular expressions shouldn't be necessary anyhow.*
 
