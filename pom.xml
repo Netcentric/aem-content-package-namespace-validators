@@ -311,7 +311,7 @@
               <!-- static imports last -->
             </importOrder>
             <licenseHeader>
-              <file>${project.basedir}/license-header.txt</file>
+              <file>${project.basedir}/.license-header.txt</file>
             </licenseHeader>
             <!-- accept all endings to support validations on top of source archives -->
             <lineEndings>PRESERVE</lineEndings>
