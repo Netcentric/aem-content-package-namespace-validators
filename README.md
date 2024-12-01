@@ -13,8 +13,8 @@ Validates that FileVault content packages stick to certain namespacing rules. Th
 There are several validators included in this artifact, all relate to namespacing rules for certain aspects of AEM:
 
 1. [FileVault Content Package Filter][filevault-workspace-filter] (`root` attribute of each `filter` element)
-1. [FileVault Content Package ID][filevault-package-id] (both `group` and optionally `name` properties of Users/Groups)
-1. [Oak Authorizables][oak-authorizables](`rep:principalName` and optionally `rep:authorizableId` properties)
+1. [FileVault Content Package ID][filevault-package-id] (both `group` and optionally `name` package properties)
+1. [Oak Authorizables][oak-authorizables](`rep:principalName` and optionally `rep:authorizableId` properties of users/groups)
 1. [Oak Query Index Definition][oakindex] (path restrictions for [Lucene][oakindex-property-pathrestrictions] or [Property][oakindex-property-pathrestrictions] index definitions)
 1. [OSGi Configuration][osgi-installer-configurations]
 1. [Sling Resource Type and Resource Super Type][sling-resource-type] (`sling:resourceType` and `sling:resourceSuperType` properties)
