@@ -61,7 +61,7 @@ public class OakIndexNamespaceValidator implements DocumentViewXmlValidator {
                             ValidationMessageSeverity.WARN,
                             "Unsupported Oak Query Index of type " + type + " found. Skip evaluation!"));
             }
-            if (includedPaths == null) {
+            if (includedPaths.isEmpty()) {
                 return Collections.singleton(new ValidationMessage(
                         severity,
                         "Oak Query Index does not have includedPaths property (is not restricted to specific paths)"));
