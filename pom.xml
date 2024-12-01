@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>biz.netcentric.filevault.validator</groupId>
   <artifactId>aem-content-package-namespace-validators</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1-SNAPSHOT</version>
 
   <name>AEM FileVault Content Package Namespace Validators</name>
   <description>FileVault validators which verify that content packages comply with certain namespacing rules.</description>
@@ -34,7 +34,7 @@
   <scm>
     <connection>scm:git:ssh://git@github.com/Netcentric/aem-content-package-namespace-validators</connection>
     <developerConnection>scm:git:ssh://git@github.com/Netcentric/aem-content-package-namespace-validators</developerConnection>
-    <tag>1.0.0</tag>
+    <tag>HEAD</tag>
     <url>https://github.com/Netcentric/aem-content-package-namespace-validators.git</url>
   </scm>
   <distributionManagement>
