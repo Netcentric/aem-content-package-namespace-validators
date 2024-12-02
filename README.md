@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/Netcentric/aem-content-package-namespace-validators/maven.yml?branch=main)](https://github.com/Netcentric/aem-content-package-namespace-validators/actions)
 [![License](https://img.shields.io/badge/License-EPL%202.0-red.svg)](https://opensource.org/licenses/EPL-2.0)
-[![Maven Central](https://img.shields.io/maven-central/v/biz.netcentric.filevault.validator/aem-content-package-namespace-validators)](https://central.sonatype.com/search?namespace=biz.netcentric.filevault.validator&name=aem-content-package-namespace-validators)
+[![Maven Central](https://img.shields.io/maven-central/v/biz.netcentric.filevault.validator/aem-content-package-namespace-validators)](https://central.sonatype.com/artifact/biz.netcentric.filevault.validator/aem-content-package-namespace-validators)
 [![SonarCloud Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Netcentric_aem-content-package-namespace-validators&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Netcentric_aem-content-package-namespace-validators)
 [![SonarCloud Coverage](https://sonarcloud.io/api/project_badges/measure?project=Netcentric_aem-content-package-namespace-validators&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Netcentric_aem-content-package-namespace-validators)
 
