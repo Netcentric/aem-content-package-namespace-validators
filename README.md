@@ -109,7 +109,7 @@ You can use this validator with the [FileVault Package Maven Plugin][filevault-p
   </configuration>
   <dependencies>
     <dependency>
-      <groupId>biz.netcentric.filevault.validator</groupId>
+      <groupId>biz.netcentric.filevault.validators</groupId>
       <artifactId>aem-namespacing-content-package-validator</artifactId>
       <version><latestversion></version>
     </dependency>
