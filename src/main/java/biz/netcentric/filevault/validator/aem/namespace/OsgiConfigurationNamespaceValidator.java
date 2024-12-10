@@ -60,32 +60,30 @@ public class OsgiConfigurationNamespaceValidator implements OsgiConfigurationVal
         // is it a factory configuration?
         boolean isFactoryConfig = subname != null;
         Collection<ValidationMessage> messages = new LinkedList<>();
-        if (!isFactoryConfig || restrictFactoryConfigurationsToAllowedPidPatterns) {
-            if (allowedPidPatterns.stream()
-                    .noneMatch(pattern -> pattern.matcher(pid).matches())) {
-                messages.add(new ValidationMessage(
-                        severity,
-                        String.format(
-                                "OSGi configuration PID '%s' is not allowed to be configured (does not match any of the allowed patterns [%s])",
-                                pid,
-                                allowedPidPatterns.stream()
-                                        .map(Pattern::pattern)
-                                        .collect(Collectors.joining(",")))));
-            }
+        if (!allowedPidPatterns.isEmpty()
+                && (!isFactoryConfig || restrictFactoryConfigurationsToAllowedPidPatterns)
+                && allowedPidPatterns.stream()
+                        .noneMatch(pattern -> pattern.matcher(pid).matches())) {
+            messages.add(new ValidationMessage(
+                    severity,
+                    String.format(
+                            "OSGi configuration PID '%s' is not allowed to be configured (does not match any of the allowed patterns [%s])",
+                            pid,
+                            allowedPidPatterns.stream().map(Pattern::pattern).collect(Collectors.joining(",")))));
         }
-        if (isFactoryConfig && !allowedFactoryPidNames.isEmpty()) {
-            if (allowedFactoryPidNames.stream()
-                    .noneMatch(pattern -> pattern.matcher(subname).matches())) {
-                messages.add(new ValidationMessage(
-                        severity,
-                        String.format(
-                                "OSGi factory configuration PID '%s' is not allowed with the given subname '%s' (does not match any of the allowed patterns [%s])",
-                                pid,
-                                subname,
-                                allowedFactoryPidNames.stream()
-                                        .map(Pattern::pattern)
-                                        .collect(Collectors.joining(",")))));
-            }
+        if (isFactoryConfig
+                && !allowedFactoryPidNames.isEmpty()
+                && allowedFactoryPidNames.stream()
+                        .noneMatch(pattern -> pattern.matcher(subname).matches())) {
+            messages.add(new ValidationMessage(
+                    severity,
+                    String.format(
+                            "OSGi factory configuration PID '%s' is not allowed with the given subname '%s' (does not match any of the allowed patterns [%s])",
+                            pid,
+                            subname,
+                            allowedFactoryPidNames.stream()
+                                    .map(Pattern::pattern)
+                                    .collect(Collectors.joining(",")))));
         }
         return messages;
     }
