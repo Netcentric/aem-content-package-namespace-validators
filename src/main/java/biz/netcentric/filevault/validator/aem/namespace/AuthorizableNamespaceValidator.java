@@ -60,8 +60,9 @@ public class AuthorizableNamespaceValidator implements DocumentViewXmlValidator 
             Collection<ValidationMessage> messages = new LinkedList<>();
             String principalName =
                     node.getPropertyValue(PROPERTY_PRINCIPAL_NAME).orElse(null);
-            if (allowedPrincipalNamePatterns.stream()
-                    .noneMatch(pattern -> pattern.matcher(principalName).matches())) {
+            if (!allowedPrincipalNamePatterns.isEmpty()
+                    && allowedPrincipalNamePatterns.stream()
+                            .noneMatch(pattern -> pattern.matcher(principalName).matches())) {
                 messages.add(new ValidationMessage(
                         severity,
                         String.format(

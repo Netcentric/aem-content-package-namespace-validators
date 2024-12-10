@@ -55,31 +55,36 @@ public class ResourceTypeNamespaceValidator implements DocumentViewXmlValidator 
     public @Nullable Collection<ValidationMessage> validate(
             @NotNull DocViewNode2 node, @NotNull NodeContext nodeContext, boolean isRoot) {
         Collection<ValidationMessage> messages = new LinkedList<>();
-        String type = node.getPropertyValue(PROPERTY_NAME_RESOURCE_TYPE).orElse(null);
-        if (type != null
-                && allowedTypePatterns.stream()
-                        .noneMatch(pattern -> pattern.matcher(type).matches())) {
-            messages.add(new ValidationMessage(
-                    severity,
-                    String.format(
-                            "Resource is using type '%s' which is not allowed (does not match any of the allowed patterns [%s])",
-                            type,
-                            allowedTypePatterns.stream().map(Pattern::pattern).collect(Collectors.joining(",")))));
+        if (!allowedTypePatterns.isEmpty()) {
+            String type = node.getPropertyValue(PROPERTY_NAME_RESOURCE_TYPE).orElse(null);
+            if (type != null
+                    && allowedTypePatterns.stream()
+                            .noneMatch(pattern -> pattern.matcher(type).matches())) {
+                messages.add(new ValidationMessage(
+                        severity,
+                        String.format(
+                                "Resource is using type '%s' which is not allowed (does not match any of the allowed patterns [%s])",
+                                type,
+                                allowedTypePatterns.stream()
+                                        .map(Pattern::pattern)
+                                        .collect(Collectors.joining(",")))));
+            }
         }
-        String superType =
-                node.getPropertyValue(PROPERTY_NAME_RESOURCE_SUPER_TYPE).orElse(null);
-        if (superType != null
-                && !allowedSuperTypePatterns.isEmpty()
-                && allowedSuperTypePatterns.stream()
-                        .noneMatch(pattern -> pattern.matcher(superType).matches())) {
-            messages.add(new ValidationMessage(
-                    severity,
-                    String.format(
-                            "Resource is using super type '%s' which is not allowed (does not match any of the allowed patterns [%s])",
-                            superType,
-                            allowedSuperTypePatterns.stream()
-                                    .map(Pattern::pattern)
-                                    .collect(Collectors.joining(",")))));
+        if (!allowedSuperTypePatterns.isEmpty()) {
+            String superType =
+                    node.getPropertyValue(PROPERTY_NAME_RESOURCE_SUPER_TYPE).orElse(null);
+            if (superType != null
+                    && allowedSuperTypePatterns.stream()
+                            .noneMatch(pattern -> pattern.matcher(superType).matches())) {
+                messages.add(new ValidationMessage(
+                        severity,
+                        String.format(
+                                "Resource is using super type '%s' which is not allowed (does not match any of the allowed patterns [%s])",
+                                superType,
+                                allowedSuperTypePatterns.stream()
+                                        .map(Pattern::pattern)
+                                        .collect(Collectors.joining(",")))));
+            }
         }
         return messages;
     }

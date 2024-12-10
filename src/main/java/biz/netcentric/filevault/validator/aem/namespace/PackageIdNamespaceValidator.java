@@ -49,8 +49,9 @@ public class PackageIdNamespaceValidator implements PropertiesValidator {
             return Collections.singleton(new ValidationMessage(severity, "Package ID is missing"));
         }
         Collection<ValidationMessage> messages = new LinkedList<>();
-        if (allowedGroupPatterns.stream()
-                .noneMatch(pattern -> pattern.matcher(id.getGroup()).matches())) {
+        if (!allowedGroupPatterns.isEmpty()
+                && allowedGroupPatterns.stream()
+                        .noneMatch(pattern -> pattern.matcher(id.getGroup()).matches())) {
             messages.add(new ValidationMessage(
                     severity,
                     String.format(
@@ -58,8 +59,9 @@ public class PackageIdNamespaceValidator implements PropertiesValidator {
                             id.getGroup(),
                             allowedGroupPatterns.stream().map(Pattern::pattern).collect(Collectors.joining(",")))));
         }
-        if (allowedNamePatterns.stream()
-                .noneMatch(pattern -> pattern.matcher(id.getName()).matches())) {
+        if (!allowedNamePatterns.isEmpty()
+                && allowedNamePatterns.stream()
+                        .noneMatch(pattern -> pattern.matcher(id.getName()).matches())) {
             messages.add(new ValidationMessage(
                     severity,
                     String.format(
