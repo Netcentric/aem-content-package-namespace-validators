@@ -19,6 +19,7 @@ There are several validators included in this artifact, all relate to namespacin
 1. [OSGi Configuration][osgi-installer-configurations]
 1. [Sling Resource Type and Resource Super Type][sling-resource-type] (`sling:resourceType` and `sling:resourceSuperType` properties)
 1. [AEM Client Library][aem-clientlibrary] (`categories` property)
+1. [Embedded Bundles][embedded] (the `Bundle-SymbolicName` of embedded bundles)
 
 Namespacing has been explicitly mentioned in [Achim Koch's Blog: Hosting Multiple Tenants on AEM](https://blog.developer.adobe.com/hosting-multiple-tenants-on-aem-815c8ed0c9f9) but obviously namespacing is just one of multiple aspects to consider for multi-tenant AEM environments.
 
@@ -33,21 +34,22 @@ The following options are supported apart from the default settings mentioned in
 Leaving the validators with the default options will not emit validation issues at all, i.e. none of the options are mandatory.
 
 
-Validator ID | Option | Description
---- | --- | --- 
-`netcentric-filter-namespace` | `allowedPathPatterns` | Comma-separated list of regular expression patterns. Each package filter `root` must match at least one of the given patterns.
-`netcentric-packageid-namespace` | `allowedGroupPatterns` | Comma-separated list of regular expression patterns. The package's group must match at least one of the given patterns.
-`netcentric-packageid-namespace` | `allowedNamePatterns` | Comma-separated list of regular expression patterns. The package's name must match at least one of the given patterns.
-`netcentric-authorizable-namespace` | `allowedPrincipalNamePatterns` | Comma-separated list of regular expression patterns. The authorizable's `rep:principalName` must match at least one of the given patterns.
-`netcentric-authorizable-namespace` | `allowedAuthorizableIdPatterns` | Comma-separated list of regular expression patterns. The authorizable's `rep:authorizableId` or its node name (if the property does not exist( must match at least one of the given patterns.
-`netcentric-authorizable-namespace` | `allowedAuthorizableIdPatterns` | Comma-separated list of regular expression patterns. The authorizable's `rep:authorizableId` or its node name (if the property does not exist) must match at least one of the given patterns.
-`netcentric-oakindex-namespace` | `allowedPathPatterns` | Comma-separated list of regular expression patterns. Each Oak index definition's path restriction ([for `lucene` index types][oakindex-lucene-pathrestrictions] or [`property` index types][oakindex-property-pathrestrictions]) must match at least one of the given patterns.
-`netcentric-osgiconfig-namespace` | `allowedPidPatterns` | Comma-separated list of regular expression patterns. Each (non-factory) configuration name given via the [OSGi Installer][osgi-installer-configurations] must have a PID matching at least one of the given patterns.
-`netcentric-osgiconfig-namespace` | `allowedFactoryPidNames` | Comma-separated list of regular expression patterns. Each factory configuration name given via the [OSGi Installer][osgi-installer-configurations] must have a name matching at least one of the given patterns.
-`netcentric-osgiconfig-namespace` | `restrictFactoryConfigurationsToAllowedPidPatterns` | Boolean flag, `false` by default. If set to `true` each factory configuration PID given via the [OSGi Installer][osgi-installer-configurations] must also matching at least one of the given patterns from `allowedPidPatterns`.
-`netcentric-resourcetype-namespace` | `allowedTypePatterns` | Comma-separated list of regular expression patterns. Each `sling:resourceType` property of arbitrary JCR nodes must match at least one of the given patterns.
-`netcentric-resourcetype-namespace` | `allowedSuperTypePatterns` | Comma-separated list of regular expression patterns. Each `sling:resourceSuperType` property of arbitrary JCR nodes must match at least one of the given patterns.
-`netcentric-clientlibrary-namespace` | `allowedCategoryPatterns` | Comma-separated list of regular expression patterns. Each [client library's `categories` value][aem-clientlibrary] must match at least one of the given patterns.
+Validator ID | Option | Description | Since
+--- | --- | --- | ---
+`netcentric-filter-namespace` | `allowedPathPatterns` | Comma-separated list of regular expression patterns. Each package filter `root` must match at least one of the given patterns. | 1.0.0
+`netcentric-packageid-namespace` | `allowedGroupPatterns` | Comma-separated list of regular expression patterns. The package's group must match at least one of the given patterns. | 1.0.0
+`netcentric-packageid-namespace` | `allowedNamePatterns` | Comma-separated list of regular expression patterns. The package's name must match at least one of the given patterns. | 1.0.0
+`netcentric-authorizable-namespace` | `allowedPrincipalNamePatterns` | Comma-separated list of regular expression patterns. The authorizable's `rep:principalName` must match at least one of the given patterns. | 1.0.0
+`netcentric-authorizable-namespace` | `allowedAuthorizableIdPatterns` | Comma-separated list of regular expression patterns. The authorizable's `rep:authorizableId` or its node name (if the property does not exist( must match at least one of the given patterns. | 1.0.0
+`netcentric-authorizable-namespace` | `allowedAuthorizableIdPatterns` | Comma-separated list of regular expression patterns. The authorizable's `rep:authorizableId` or its node name (if the property does not exist) must match at least one of the given patterns. | 1.0.0
+`netcentric-oakindex-namespace` | `allowedPathPatterns` | Comma-separated list of regular expression patterns. Each Oak index definition's path restriction ([for `lucene` index types][oakindex-lucene-pathrestrictions] or [`property` index types][oakindex-property-pathrestrictions]) must match at least one of the given patterns. | 1.0.0
+`netcentric-osgiconfig-namespace` | `allowedPidPatterns` | Comma-separated list of regular expression patterns. Each (non-factory) configuration name given via the [OSGi Installer][osgi-installer-configurations] must have a PID matching at least one of the given patterns. | 1.0.0
+`netcentric-osgiconfig-namespace` | `allowedFactoryPidNames` | Comma-separated list of regular expression patterns. Each factory configuration name given via the [OSGi Installer][osgi-installer-configurations] must have a name matching at least one of the given patterns. | 1.0.0
+`netcentric-osgiconfig-namespace` | `restrictFactoryConfigurationsToAllowedPidPatterns` | Boolean flag, `false` by default. If set to `true` each factory configuration PID given via the [OSGi Installer][osgi-installer-configurations] must also matching at least one of the given patterns from `allowedPidPatterns`. | 1.0.0
+`netcentric-resourcetype-namespace` | `allowedTypePatterns` | Comma-separated list of regular expression patterns. Each `sling:resourceType` property of arbitrary JCR nodes must match at least one of the given patterns. | 1.0.0
+`netcentric-resourcetype-namespace` | `allowedSuperTypePatterns` | Comma-separated list of regular expression patterns. Each `sling:resourceSuperType` property of arbitrary JCR nodes must match at least one of the given patterns. | 1.0.0
+`netcentric-clientlibrary-namespace` | `allowedCategoryPatterns` | Comma-separated list of regular expression patterns. Each [client library's `categories` value][aem-clientlibrary] must match at least one of the given patterns. | 1.0.0
+`netcentric-embedded-namespace` | `allowedBundleSymbolicNamePatterns` | Comma-separated list of regular expression patterns. Each [embedded bundle in the package][embedded] must have a `Bundle-SymbolicName` in its manifest which matches at least one of the given patterns. | 1.1.0
 
 *Due to the use of comma-separated strings it is not possible to use a comma within the regular expressions. However, as those are matched against names/paths (which don't allow a comma anyhow) using the comma inside the regular expressions shouldn't be necessary anyhow.*
 
@@ -67,44 +69,49 @@ You can use this validator with the [FileVault Package Maven Plugin][filevault-p
     <validatorsSettings>
       <netcentric-authorizable-namespace>
         <options>
-            <allowedPrincipalNamePatterns>mytenant-.*</allowedPrincipalNamePatterns>
-            <allowedAuthorizableIdPatterns>mytenant-.*</allowedAuthorizableIdPatterns>
+          <allowedPrincipalNamePatterns>mytenant-.*</allowedPrincipalNamePatterns>
+          <allowedAuthorizableIdPatterns>mytenant-.*</allowedAuthorizableIdPatterns>
         </options>
       </netcentric-authorizable-namespace>
       <netcentric-clientlibrary-namespace>
         <options>
-            <allowedCategoryPatterns>mytenant-.*</allowedCategoryPatterns>
+          <allowedCategoryPatterns>mytenant-.*</allowedCategoryPatterns>
         </options>
       </netcentric-clientlibrary-namespace>
      <netcentric-filter-namespace>
         <options>
-            <allowedFilterRootPatterns>/apps/mytenant(/.*)?,/conf/mytenant(/.*)?,/home/users/mytenant(/.*)?,/oak:index/mytenant-(.*)</allowedFilterRootPatterns>
+          <allowedFilterRootPatterns>/apps/mytenant(/.*)?,/conf/mytenant(/.*)?,/home/users/mytenant(/.*)?,/oak:index/mytenant-(.*)</allowedFilterRootPatterns>
         </options>
       </netcentric-filter-namespace>
       <netcentric-oakindex-namespace>
         <options>
-            <allowedPathPatterns>/content/mytenant(/.*)?</allowedPathPatterns>
+          <allowedPathPatterns>/content/mytenant(/.*)?</allowedPathPatterns>
         </options>
       </netcentric-oakindex-namespace>
       <netcentric-osgiconfig-namespace>
         <options>
-            <allowedPidPatterns>com\.example\.mytenant\..*</allowedPidPatterns>
-            <allowedFactoryPidNames>name.*</allowedFactoryPidNames>
-            <restrictFactoryConfigurationsToAllowedPidPatterns>true</restrictFactoryConfigurationsToAllowedPidPatterns>
+          <allowedPidPatterns>com\.example\.mytenant\..*</allowedPidPatterns>
+          <allowedFactoryPidNames>name.*</allowedFactoryPidNames>
+          <restrictFactoryConfigurationsToAllowedPidPatterns>true</restrictFactoryConfigurationsToAllowedPidPatterns>
         </options>
       </netcentric-osgiconfig-namespace>
       <netcentric-packageid-namespace>
         <options>
-             <allowedGroupPatterns>biz\.netcentric\.filevault\.validator\.aem\.namespace\.it</allowedGroupPatterns>
-             <allowedNamePatterns>.*-package</allowedNamePatterns>
+          <allowedGroupPatterns>biz\.netcentric\.filevault\.validator\.aem\.namespace\.it</allowedGroupPatterns>
+          <allowedNamePatterns>.*-package</allowedNamePatterns>
         </options>
       </netcentric-packageid-namespace>
       <netcentric-resourcetype-namespace>
         <options>
-            <allowedSuperTypePatterns>/apps/mytenant2/components/.*</allowedSuperTypePatterns>
-            <allowedTypePatterns>/apps/mytenant2/components/.*</allowedTypePatterns>
+          <allowedSuperTypePatterns>/apps/mytenant2/components/.*</allowedSuperTypePatterns>
+          <allowedTypePatterns>/apps/mytenant2/components/.*</allowedTypePatterns>
         </options>
       </netcentric-resourcetype-namespace>
+      <netcentric-embedded-namespace>
+        <options>
+          <allowedBundleSymbolicNamePatterns>mytenant-.*<allowedBundleSymbolicNamePatterns>
+        </options>
+      </netcentric-embedded-namespace>
     </validatorsSettings>
   </configuration>
   <dependencies>
@@ -131,4 +138,5 @@ Adobe, and AEM are either registered trademarks or trademarks of Adobe in the Un
 [filevault-package-id]: https://jackrabbit.apache.org/filevault/properties.html
 [sling-resource-type]: https://sling.apache.org/documentation/the-sling-engine/resources.html#resource-types
 [oak-authorizables]: https://jackrabbit.apache.org/oak/docs/security/user/default.html#representation-in-the-repository
+[embedded]: https://jackrabbit.apache.org/filevault-package-maven-plugin/osgi.html#bundles-and-configurations
 

@@ -16,8 +16,23 @@
                 <artifactId>filevault-package-maven-plugin</artifactId>
                 <configuration>
                     <packageType>container</packageType>
+                    <embeddeds>
+                        <embedded>
+                            <artifactId>commons-lang3</artifactId>
+                            <filter>true</filter>
+                        </embedded>
+                    </embeddeds>
+                    <embeddedTarget>/apps/mytenant/install</embeddedTarget>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.17.0</version>
+        </dependency>
+    </dependencies>
 </project>
