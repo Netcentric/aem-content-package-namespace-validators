@@ -94,6 +94,11 @@
                                     <allowedTypePatterns>/apps/mytenant2/components/.*</allowedTypePatterns>
                                 </options>
                             </netcentric-resourcetype-namespace>
+                            <netcentric-embedded-namespace>
+                                <options>
+                                    <allowedBundleSymbolicNamePatterns>org.apache.commons.lang3</allowedBundleSymbolicNamePatterns>
+                                </options>
+                            </netcentric-embedded-namespace>
                         </validatorsSettings>
                     </configuration>
                     <dependencies>

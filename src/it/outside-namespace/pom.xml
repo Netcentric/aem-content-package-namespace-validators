@@ -100,6 +100,11 @@
                                     <allowedTypePatterns>/apps/mytenant2/components/.*</allowedTypePatterns>
                                 </options>
                             </netcentric-resourcetype-namespace>
+                            <netcentric-embedded-namespace>
+                                <options>
+                                    <allowedBundleSymbolicNamePatterns>some-unused-prefix</allowedBundleSymbolicNamePatterns>
+                                </options>
+                            </netcentric-embedded-namespace>
                         </validatorsSettings>
                     </configuration>
                     <dependencies>
