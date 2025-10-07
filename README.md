@@ -23,6 +23,8 @@ There are several validators included in this artifact, all relate to namespacin
 
 Namespacing has been explicitly mentioned in [Achim Koch's Blog: Hosting Multiple Tenants on AEM](https://blog.developer.adobe.com/hosting-multiple-tenants-on-aem-815c8ed0c9f9) but obviously namespacing is just one of multiple aspects to consider for multi-tenant AEM environments.
 
+There was also a talk about multi-tenancy and this tool in the [adaptTo 2025 conference](https://adapt.to/2025/schedule/multi-tenancy-and-multi-team-development-in-aem).
+
 ## Implementation
 
 This artifact provides multiple validator implementations for the [FileVault Validation Module][filevault-validation] and can be used for example with the [filevault-package-maven-plugin][filevault-p-m-p] like outlined below.
@@ -123,6 +125,8 @@ You can use this validator with the [FileVault Package Maven Plugin][filevault-p
   </dependencies>
 </plugin>
 ```
+
+There is also a project skeleton at <https://github.com/Netcentric/aem-multitenant-demo> which includes these validators with a simple prefix based tenant namespace approach.
 
 Adobe, and AEM are either registered trademarks or trademarks of Adobe in the United States and/or other countries.
 
