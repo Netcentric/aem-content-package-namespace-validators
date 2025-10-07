@@ -7,7 +7,7 @@
 
   <name>AEM FileVault Content Package Namespace Validators</name>
   <description>FileVault validators which verify that content packages comply with certain namespacing rules.</description>
-  <url>https://github.com/Netcentric/aem-namespacing-content-package-validator</url>
+  <url>https://github.com/Netcentric/aem-content-package-namespace-validators</url>
   <inceptionYear>2024</inceptionYear>
   <organization>
     <name>Cognizant Netcentric</name>
