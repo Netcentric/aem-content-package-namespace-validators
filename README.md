@@ -19,11 +19,13 @@ There are several validators included in this artifact, all relate to namespacin
 1. [OSGi Configuration][osgi-installer-configurations]
 1. [Sling Resource Type and Resource Super Type][sling-resource-type] (`sling:resourceType` and `sling:resourceSuperType` properties)
 1. [AEM Client Library][aem-clientlibrary] (`categories` property)
-1. [Embedded Bundles][embedded] (the `Bundle-SymbolicName` of embedded bundles)
+1. [Embedded Bundles][embedded] (the `Bundle-SymbolicName` of embedded bundles, can be validated on bundle side via <https://github.com/Netcentric/bundle-namespace-validators> as well)
 
 Namespacing has been explicitly mentioned in [Achim Koch's Blog: Hosting Multiple Tenants on AEM](https://blog.developer.adobe.com/hosting-multiple-tenants-on-aem-815c8ed0c9f9) but obviously namespacing is just one of multiple aspects to consider for multi-tenant AEM environments.
 
 There was also a talk about multi-tenancy and this tool in the [adaptTo 2025 conference](https://adapt.to/2025/schedule/multi-tenancy-and-multi-team-development-in-aem).
+
+For a similar tool for OSGi bundles look at <https://github.com/Netcentric/bundle-namespace-validators>.
 
 ## Implementation
 
