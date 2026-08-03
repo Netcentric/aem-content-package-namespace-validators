@@ -8,7 +8,7 @@
 
 ## Overview
 
-Validates that FileVault content packages comply with namespacing rules. This is helpful to make sure that separate AEM applications may run in parallel on the same server without stepping on each other toes. This is particularly important with [multiple teams working on the same AEM environment](https://experienceleague.adobe.com/en/docs/experience-manager-learn/assets/deployment/multitenancy-concurrent-article-understand) (also outlined in [Considerations for a multi-team setup](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/using-cloud-manager/managing-code/enterprise-team-dev-setup#considerations)).
+Validates that FileVault content packages comply with namespacing rules. This is helpful to make sure that separate AEM applications may run in parallel on the same server without stepping on each other toes. Namespacing rules are particularly important with [multiple teams working on the same AEM environment](https://experienceleague.adobe.com/en/docs/experience-manager-learn/assets/deployment/multitenancy-concurrent-article-understand) (also outlined in [Considerations for a multi-team setup](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/using-cloud-manager/managing-code/enterprise-team-dev-setup#considerations)).
 
 There are several validators included in this artifact, all relate to namespacing rules for certain aspects of AEM:
 
@@ -23,7 +23,7 @@ There are several validators included in this artifact, all relate to namespacin
 
 Namespacing has been explicitly mentioned in [Achim Koch's Blog: Hosting Multiple Tenants on AEM](https://blog.developer.adobe.com/hosting-multiple-tenants-on-aem-815c8ed0c9f9) but obviously namespacing is just one of multiple aspects to consider for multi-tenant AEM environments.
 
-There was also a talk about multi-tenancy and this tool in the [adaptTo 2025 conference](https://adapt.to/2025/schedule/multi-tenancy-and-multi-team-development-in-aem).
+There was also a talk about multi-tenancy and this tool at the [adaptTo 2025 conference](https://adapt.to/2025/schedule/multi-tenancy-and-multi-team-development-in-aem).
 
 For a similar tool for OSGi bundles look at <https://github.com/Netcentric/bundle-namespace-validators>.
 
