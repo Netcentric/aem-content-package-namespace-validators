@@ -8,7 +8,7 @@
 
 ## Overview
 
-Validates that FileVault content packages stick to certain namespacing rules. This is helpful to make sure that separate AEM applications may run in parallel on the same server without stepping on each other toes. This is particularly useful with [multiple teams working on the same AEM environment](https://experienceleague.adobe.com/en/docs/experience-manager-learn/assets/deployment/multitenancy-concurrent-article-understand) (also outlined in [Considerations for a multi-team setup](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/using-cloud-manager/managing-code/enterprise-team-dev-setup#considerations)).
+Validates that FileVault content packages comply with namespacing rules. This is helpful to make sure that separate AEM applications may run in parallel on the same server without stepping on each other toes. This is particularly important with [multiple teams working on the same AEM environment](https://experienceleague.adobe.com/en/docs/experience-manager-learn/assets/deployment/multitenancy-concurrent-article-understand) (also outlined in [Considerations for a multi-team setup](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/using-cloud-manager/managing-code/enterprise-team-dev-setup#considerations)).
 
 There are several validators included in this artifact, all relate to namespacing rules for certain aspects of AEM:
 
