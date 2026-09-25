@@ -120,7 +120,7 @@ You can use this validator with the [FileVault Package Maven Plugin][filevault-p
   </configuration>
   <dependencies>
     <dependency>
-      <groupId>biz.netcentric.filevault.validators</groupId>
+      <groupId>biz.netcentric.filevault.validator</groupId>
       <artifactId>aem-content-package-namespace-validators</artifactId>
       <version><latestversion></version>
     </dependency>
